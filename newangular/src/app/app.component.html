@@ -1,0 +1,16 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}! <br>
+    Msg from child is ---- {{message}}
+  </h1>
+  <app-test (childEvent)="message=$event"  [parentData]="name"></app-test>
+  <app-employee-details></app-employee-details>
+</div>
+
+
+
+
+
+
+
