@@ -1,10 +1,8 @@
 // mongoosejs.com
 const mongoose = require('mongoose')
-const validator = require('validator')
-const chalk = require('chalk')
+const bcryptJS = require('bcryptjs')
 
-
-const Task = new mongoose.model('Task', {
+const taskSchema = mongoose.Schema({
     description: {
         type: String,
         required: true,
@@ -13,8 +11,17 @@ const Task = new mongoose.model('Task', {
         type: Boolean,
         required: false,
         default: false
+    },
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'USER' // tels the owner of this fieled
     }
-})
+}, {
+        timestamps: true
+    })
+
+const Task = new mongoose.model('Task', taskSchema)
 module.exports = Task
 // const task = new Task({
 //     description: 'Read nodejs',
